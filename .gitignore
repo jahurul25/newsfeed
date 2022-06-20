@@ -242,6 +242,6 @@ Control.ca-list
 Control.ca-bundle   
 Control.system-ca-bundle 
 GitHub.sublime-settings 
-newsfeed/__pycache__
-newsfeedapp/__pycache__
+newsfeed/*
+newsfeed/__pycache__/
 media/
