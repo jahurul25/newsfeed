@@ -1,23 +1,31 @@
 <html>
     <head>
-        <title>User Login</title>
+        <title>User Signup</title>
     </head>
     <body>
         <form method="post"> {% csrf_token %}
             <table>
                 <tr>
                     <th>Email</th>
-                    <td><input type="text" name="user_email" placeholder="Input email" required></td>
-                </tr>
+                    <td><input type="email" name="user_email" placeholder="Input email" required></td>
+                </tr> 
                 <tr>
                     <th>Password</th>
                     <td><input type="password" name="user_pass" placeholder="Input password" required></td>
                 </tr> 
                 <tr>
+                    <th>First Name</th>
+                    <td><input type="text" name="first_name" placeholder="Input First Name" required></td>
+                </tr> 
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type="text" name="last_name" placeholder="Input Last Name"></td>
+                </tr> 
+                <tr>
                     <th></th>
                     <td>
                         <input type="submit" value="Login">
-                        <a href="/signup/">Signup</a>
+                        <a href="/">Login</a>
                     </td>
                 </tr> 
             </table>
