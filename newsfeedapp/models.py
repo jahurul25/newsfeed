@@ -21,3 +21,18 @@ class NewsInfo(models.Model):
         ordering  = ["-published_at"]
         db_table  = "news_info"
         verbose_name_plural = "News Info"
+
+class UserSettings(models.Model): 
+    country        = models.TextField(blank=True, null=True)
+    news_source    = models.TextField(blank=True, null=True) 
+    news_keyword   = models.TextField(blank=True, null=True)
+    deleted        = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.country)
+
+    class Meta:
+        managed   = True
+        ordering  = ["-id"]
+        db_table  = "user_settings"
+        verbose_name_plural = "User Settings "
