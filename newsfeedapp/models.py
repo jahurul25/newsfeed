@@ -22,7 +22,7 @@ class NewsInfo(models.Model):
         db_table  = "news_info"
         verbose_name_plural = "News Info"
 
-class UserSettings(models.Model): 
+class NewsfeedSettings(models.Model): 
     country        = models.TextField(blank=True, null=True)
     news_source    = models.TextField(blank=True, null=True) 
     news_keyword   = models.TextField(blank=True, null=True)
@@ -34,5 +34,5 @@ class UserSettings(models.Model):
     class Meta:
         managed   = True
         ordering  = ["-id"]
-        db_table  = "user_settings"
-        verbose_name_plural = "User Settings "
+        db_table  = "newsfeed_settings"
+        verbose_name_plural = "News Settings "

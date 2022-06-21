@@ -75,3 +75,8 @@ def user_logout(request):
 def home(request):
 
     return render(request, 'index.html')
+
+@login_required(login_url="user_login")
+def newsfeed_settings(request):
+
+    return render(request, 'newsfeed_settings.html')
