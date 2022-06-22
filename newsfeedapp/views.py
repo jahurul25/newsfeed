@@ -71,7 +71,7 @@ def user_logout(request):
     logout(request)
     return redirect("user_login") 
 
-@login_required(login_url="user_login")
+# @login_required(login_url="user_login")
 def home(request):
 
     return render(request, 'index.html')
@@ -80,3 +80,7 @@ def home(request):
 def newsfeed_settings(request):
 
     return render(request, 'newsfeed_settings.html')
+
+def details(request):
+
+    return render(request, 'details.html')

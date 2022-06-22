@@ -1,0 +1,4 @@
+python manage.py runserver
+#celery -A newsfeed worker -l info -Q celery
+celery -A newsfeed.celery worker --pool=solo -l INFO
+celery -A newsfeed.celery beat
