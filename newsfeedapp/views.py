@@ -2,8 +2,9 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-import requests, random, string
+import requests, json, random, string
 from newsfeedapp.sendgridemail import SendGridEmailSend
+from django.core.cache import cache
 # Create your views here.
 
 User = get_user_model()
@@ -75,8 +76,14 @@ def user_logout(request):
 
 # @login_required(login_url="user_login")
 def home(request):
+    url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=880be7984e8546d1a4e4f00471040890"
+    response = requests.get(url)
+    data = response.json()
 
-    return render(request, 'index.html')
+    context = {
+        "news_data": data["articles"]
+    }
+    return render(request, 'index.html', context)
 
 @login_required(login_url="user_login")
 def newsfeed_settings(request):
