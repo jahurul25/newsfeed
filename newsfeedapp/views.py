@@ -3,10 +3,12 @@ from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import requests, random, string
-
+from newsfeedapp.sendgridemail import SendGridEmailSend
 # Create your views here.
 
 User = get_user_model()
+
+
 
 def user_login(request):
     try:
@@ -54,7 +56,7 @@ def reset_password(request):
             random_password = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 10))    
             user.set_password(random_password)
             user.save()
-
+            SendGridEmailSend.sendEmail(user_email, subject="sendgrid test email", html_content="<h1> Sendgrid Test Email Successful </h1>")
             context = {
                 "msg": "Password reset successfully. Please check your email"
             } 

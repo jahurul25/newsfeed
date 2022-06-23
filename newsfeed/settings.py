@@ -142,6 +142,8 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_BEAT_SCHEDULE = {
     "sample_task": {
         "task": "newsfeedapp.tasks.sample_task",
-        "schedule": crontab(minute="*/14"),
+        "schedule": crontab(minute="*/1"),
     },
 }
+
+SENDGRID_API_KEY='Input your SENDGRID_API_KEY'
