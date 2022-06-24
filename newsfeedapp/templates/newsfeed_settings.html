@@ -4,7 +4,50 @@
 
 
 {% block content %} 
-    <div>
-        <h1>Newsfeed settings</h1>
+
+    <div class="container">
+        <div class="user-form" style="width: 100%;">
+            <h2>Newsfeed Settings</h2>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form method="post"> {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Country</th>
+                        <td><input type="text" class="form-control" name="country_of_news" placeholder="Input country, Ex. US, BD" required></td>
+                    </tr> 
+                    <tr>
+                        <th>Source of news</th>
+                        <td><input type="text" class="form-control" name="source_of_news" placeholder="Input source of news. Ex. BBC, CNN" required></td>
+                    </tr> 
+                    <tr>
+                        <th>Keywords</th>
+                        <td><input type="text" class="form-control" name="keywords_of_news" placeholder="Input your keywords. Ex. Business" required></td>
+                    </tr>  
+                </table>
+                <input class="btn btn-success" type="submit" value="Save"> 
+            </form>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>Country of news</th>
+                    <th>Source of news</th>
+                    <th>Keywords</th>
+                </tr>
+                {% for data in get_newsfeed_settings %}
+                    <tr>
+                        <td>{{ data.country }}</td>
+                        <td>{{ data.news_source }}</td>
+                        <td>{{ data.news_keyword }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
+
 {% endblock %}

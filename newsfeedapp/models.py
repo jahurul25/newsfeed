@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -23,6 +24,7 @@ class NewsInfo(models.Model):
         verbose_name_plural = "News Info"
 
 class NewsfeedSettings(models.Model): 
+    user           = models.ForeignKey(User, on_delete=models.CASCADE)
     country        = models.TextField(blank=True, null=True)
     news_source    = models.TextField(blank=True, null=True) 
     news_keyword   = models.TextField(blank=True, null=True)
