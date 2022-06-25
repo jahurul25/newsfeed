@@ -79,8 +79,28 @@ def user_logout(request):
 
 @login_required(login_url="user_login")
 def home(request):
-    user_settings = models.NewsfeedSettings.objects.filter(user_id = request.user.id, deleted=False)
-    url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=880be7984e8546d1a4e4f00471040890"
+    user_settings = models.NewsfeedSettings.objects.filter(user_id=request.user.id, deleted=False).order_by("-id").first()
+    
+    query_params = ""
+    if user_settings and user_settings.country:
+        country = user_settings.country.split(",") 
+        for c in country: 
+            query_params += "country="+c.lower().strip()+"&"
+    else:
+        query_params = "country=us&"
+
+    if user_settings and user_settings.news_keyword:
+        news_keywords = user_settings.news_keyword.split(",") 
+        for k in news_keywords: 
+            query_params += "category="+k.lower().strip()+"&"
+
+    if user_settings and user_settings.news_source:
+        sources = user_settings.news_source.split(",") 
+        for s in sources: 
+            query_params += "id="+s.lower().strip()+"&"
+
+    url = "https://newsapi.org/v2/top-headlines?{}apiKey=880be7984e8546d1a4e4f00471040890".format(query_params)
+
     response = requests.get(url)
     data = response.json()
 

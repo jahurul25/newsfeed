@@ -23,11 +23,11 @@
                     </tr> 
                     <tr>
                         <th>Source of news</th>
-                        <td><input type="text" class="form-control" name="source_of_news" placeholder="Input source of news. Ex. BBC, CNN" required></td>
+                        <td><input type="text" class="form-control" name="source_of_news" placeholder="Input source of news. Ex. abc-news, al-jazeera-english" required></td>
                     </tr> 
                     <tr>
-                        <th>Keywords</th>
-                        <td><input type="text" class="form-control" name="keywords_of_news" placeholder="Input your keywords. Ex. Business" required></td>
+                        <th>Keywords/Category</th>
+                        <td><input type="text" class="form-control" name="keywords_of_news" placeholder="Input your keywords. Ex. Business, Entertainment, Sports" required></td>
                     </tr>  
                 </table>
                 <input class="btn btn-success" type="submit" value="Save"> 
@@ -37,7 +37,7 @@
                 <tr>
                     <th>Country of news</th>
                     <th>Source of news</th>
-                    <th>Keywords</th>
+                    <th>Keywords/Category</th>
                 </tr>
                 {% for data in get_newsfeed_settings %}
                     <tr>

@@ -1,7 +1,6 @@
 import os
 from celery.schedules import crontab
 from django.contrib.messages import constants as messages
-import newsfeedapp.tasks
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -146,7 +145,7 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-SENDGRID_API_KEY='SG.DG8RXmH6ZR4mENbXYsUz9dw.DrfTVj7fVGWunyxzkL2N8XX_Lt-4FflaUQlBNlWP-wcY'
+SENDGRID_API_KEY='Input your sendgrid apikey here'
 
 
 MESSAGE_TAGS = {
